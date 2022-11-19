@@ -23,6 +23,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import org.junit.Test;
 
@@ -48,7 +49,7 @@ public class GoogleStreetViewTest {
 
 	@Test
 	public void testImageDownload() throws IOException {
-		File file = File.createTempFile(getClass().getSimpleName(), null);
+		File file = Files.createTempFile(getClass().getSimpleName(), null).toFile();
 		file.deleteOnExit();
 		assertTrue(mStreetView.image(mParams, file).isSuccessful());
 		assertTrue(file.length() > 0);
